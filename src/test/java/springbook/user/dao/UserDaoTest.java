@@ -70,7 +70,7 @@ public class UserDaoTest {
         Assertions.assertEquals(userget1.getPassword(), user1.getPassword());
 
         // DB에서 데이터 조회
-        User userget2 = dao.get(user2.getId());
+        User userget2  = dao.get(user2.getId());
         // DB에서 조회한 데이터와 등록한 데이터가 같아야 한다
         Assertions.assertEquals(userget2.getName(), user2.getName());
         Assertions.assertEquals(userget2.getPassword(), user2.getPassword());
