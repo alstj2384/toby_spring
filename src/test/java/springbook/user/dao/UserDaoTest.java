@@ -24,7 +24,7 @@ import java.sql.*;
 
 @DirtiesContext
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = DaoFactory.class)
+@ContextConfiguration(classes = test_DaoFactory.class)
 public class UserDaoTest {
 
     @Autowired
