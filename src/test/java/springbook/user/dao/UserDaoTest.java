@@ -27,20 +27,16 @@ import java.sql.*;
 @ContextConfiguration(classes = test_DaoFactory.class)
 public class UserDaoTest {
 
-    @Autowired
     private UserDao dao;
     private User user1;
     private User user2;
     private User user3;
-    @Autowired
-    private ApplicationContext ac;
 
 
     @BeforeEach
     public void setUp(){
-        System.out.println("this.ac = " + this.ac);
-        System.out.println("this = " + this);
 
+        dao = new UserDao();
         this.user1 = new User("gyumee", "박성철", "1234");
         this.user2 = new User("leegw700", "이길원", "1234");
         this.user3 = new User("bumjin", "박범진", "1234");
