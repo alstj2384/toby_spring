@@ -18,8 +18,15 @@ public class UserDao {
 
 
     public void deleteAll() throws SQLException{
-        StatementStrategy st = new DeleteAllStatement();
-        jdbcContextWithStatementStrategy(st);
+        jdbcContextWithStatementStrategy(
+                new StatementStrategy() {
+                    @Override
+                    public PreparedStatement makePrepareStatement(Connection c) throws SQLException {
+                        return c.prepareStatement("delete from users");
+                    }
+                }
+            )
+        ;
     }
 
 
@@ -60,8 +67,20 @@ public class UserDao {
         }
     }
     public void add(User user) throws SQLException{
-        StatementStrategy st = new AddStatement(user);
-        jdbcContextWithStatementStrategy(st);
+        jdbcContextWithStatementStrategy(
+                new StatementStrategy() {
+                    @Override
+                    public PreparedStatement makePrepareStatement(Connection c) throws SQLException {
+                        PreparedStatement ps = c.prepareStatement(
+                                "insert into users(id, name, password) values(?, ?, ?)");
+                        ps.setString(1, user.getId());
+                        ps.setString(2, user.getName());
+                        ps.setString(3, user.getPassword());
+
+                        return ps;
+                    }
+                }
+        );
     }
 
 
