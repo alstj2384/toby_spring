@@ -16,6 +16,13 @@ public class DaoFactory {
         return userDao;
     }
 
+//    @Bean
+//    public JdbcContext jdbcContext(){
+//        JdbcContext jdbcContext = new JdbcContext();
+//        jdbcContext.setDataSource(dataSource());
+//        return jdbcContext;
+//    }
+
     @Bean
     public DataSource dataSource(){
         SimpleDriverDataSource dataSource = new SimpleDriverDataSource();

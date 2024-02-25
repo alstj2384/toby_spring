@@ -26,24 +26,28 @@ import java.sql.*;
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = DaoFactory.class)
 public class UserDaoTest {
-
+    @Autowired
     private UserDao dao;
     private User user1;
     private User user2;
     private User user3;
+    private JdbcContext jdbcContext;
 
 
     @BeforeEach
     public void setUp(){
 
-        dao = new UserDao();
+//        dao = new UserDao();
         this.user1 = new User("gyumee", "박성철", "1234");
         this.user2 = new User("leegw700", "이길원", "1234");
         this.user3 = new User("bumjin", "박범진", "1234");
 
-        DataSource dataSource = new SingleConnectionDataSource(
-                "jdbc:mysql://localhost/jdbc", "spring", "book", true);
-        dao.setDataSource(dataSource);
+//        JdbcContext jdbcContext = new JdbcContext();
+//        DataSource dataSource = new SingleConnectionDataSource(
+//                "jdbc:mysql://localhost/jdbc", "spring", "book", true);
+//        jdbcContext.setDataSource(dataSource);
+//        dao.setDataSource(dataSource);
+//        dao.setJdbcContext(jdbcContext);
     }
 
     @Test
