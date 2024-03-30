@@ -19,11 +19,9 @@ public class UserDao {
 
     private JdbcTemplate jdbcTemplate;
 
-    public void setDataSource(DataSource dataSource) {
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
-
+    public UserDao(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
     }
-
 
     public void deleteAll() {
         this.jdbcTemplate.update("delete from user");

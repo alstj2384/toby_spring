@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class JdbcContext {
     private DataSource dataSource;
 
-    public void setDataSource(DataSource dataSource){
+    public JdbcContext(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 
