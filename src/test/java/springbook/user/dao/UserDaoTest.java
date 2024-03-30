@@ -49,7 +49,7 @@ public class UserDaoTest {
 //                "jdbc:mysql://localhost/jdbc", "spring", "book", true);
 //        jdbcContext.setDataSource(dataSource);
 //        dao.setDataSource(dataSource);
-//        dao.setJdbcContext(jdbcContext);s
+//        dao.setJdbcContext(jdbcContext);ss
     }
 
     @Test
