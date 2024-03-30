@@ -17,6 +17,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import springbook.user.dao.DaoFactory;
 import springbook.user.dao.UserDao;
+import springbook.user.domain.Level;
 import springbook.user.domain.User;
 
 import javax.sql.DataSource;
@@ -39,9 +40,9 @@ public class UserDaoTest {
     public void setUp(){
 
 //        dao = new UserDao();
-        this.user1 = new User("gyumee", "박성철", "1234");
-        this.user2 = new User("leegw700", "이길원", "1234");
-        this.user3 = new User("bumjin", "박범진", "1234");
+        this.user1 = new User("gyumee", "박성철", "1234", Level.BASIC, 1, 0);
+        this.user2 = new User("leegw700", "이길원", "1234", Level.SILVER, 55, 10);
+        this.user3 = new User("bumjin", "박범진", "1234", Level.GOLD, 100 ,40);
 
 //        JdbcContext jdbcContext = new JdbcContext();
 //        DataSource dataSource = new SingleConnectionDataSource(
@@ -67,14 +68,12 @@ public class UserDaoTest {
         // DB에서 데이터 조회
         User userget1 = dao.get(user1.getId());
         // DB에서 조회한 데이터와 등록한 데이터가 같아야 한다
-        Assertions.assertEquals(userget1.getName(), user1.getName());
-        Assertions.assertEquals(userget1.getPassword(), user1.getPassword());
+        checkSamUser(userget1, user1);
 
         // DB에서 데이터 조회
         User userget2  = dao.get(user2.getId());
         // DB에서 조회한 데이터와 등록한 데이터가 같아야 한다
-        Assertions.assertEquals(userget2.getName(), user2.getName());
-        Assertions.assertEquals(userget2.getPassword(), user2.getPassword());
+        checkSamUser(userget2, user2);
 
         // DB getCount 메서드 검증, 열 개수가 1이면 된다
         Assertions.assertEquals(dao.getCount(), 2);
@@ -128,6 +127,9 @@ public class UserDaoTest {
         Assertions.assertEquals(user1.getId(), user2.getId());
         Assertions.assertEquals(user1.getName(), user2.getName());
         Assertions.assertEquals(user1.getPassword(), user2.getPassword());
+        Assertions.assertEquals(user1.getLevel(), user2.getLevel());
+        Assertions.assertEquals(user1.getLogin(), user2.getLogin());
+        Assertions.assertEquals(user1.getRecommend(), user2.getRecommend());
     }
 
 }
