@@ -44,12 +44,12 @@ public class UserDaoTest {
         this.user2 = new User("leegw700", "이길원", "1234", Level.SILVER, 55, 10);
         this.user3 = new User("bumjin", "박범진", "1234", Level.GOLD, 100 ,40);
 
-//        JdbcContext jdbcContext = new JdbcContext();
+//        JdbcCont ext jdbcContext = new JdbcContext();
 //        DataSource dataSource = new SingleConnectionDataSource(
 //                "jdbc:mysql://localhost/jdbc", "spring", "book", true);
 //        jdbcContext.setDataSource(dataSource);
 //        dao.setDataSource(dataSource);
-//        dao.setJdbcContext(jdbcContext);
+//        dao.setJdbcContext(jdbcContext);s
     }
 
     @Test
